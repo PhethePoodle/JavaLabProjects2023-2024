@@ -1,0 +1,130 @@
+/*/***************************************************************
+* Programmer: Pheobe Hill
+* BroncoNetID: Pzs0022
+* Lab 1: Jacobs ladder inc. Invoice
+* CIS 2600: Business Application Programming spring 2023
+*
+* Due date: 09/28/2023
+* Date completed: 09/26/2023
+****************************************************************
+The purpose of this program is to get user information for a job and 
+calculate the totals
+
+1. Decalre data types and varaibles.
+2. Display questions to the user by using command lines.
+3. Collect user information by using a scanner class and next() method acording to data types. 
+4. create a method to calculate total hours.
+5. Create a method to calculate total traveling time
+6. Create a method to calculate the total of everything
+7. Display invoice of calculations
+***************************************************************//*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package pkg1labpheobehill;
+
+///import scanner 
+import java.util.Scanner;
+
+
+
+public class Main {
+ 
+
+ 
+    //the main
+    public static void main(String[] args) {
+        
+        ///declare variables and data types
+          String Jobname;      
+          double  Jobcost;          
+          double Jobhours;   
+          double traveltime; 
+          double GettotalH;
+          double GettotalT;
+          double Gettotal;
+          int go;
+          
+          
+        
+        //create a scanner class (UserInfo) to obtain int,double,strings //
+         Scanner UserInfo = new Scanner(System.in);
+    
+        //seperate lines
+        System.out.print("===========================================================================\n");
+       
+        ////Get user info for job name, cost, hours, travel time.
+        //Get user job name
+        System.out.print("Please enter the Job name: ");
+        Jobname = UserInfo.next(); 
+        
+        //Get user job cost
+        System.out.print("Please enter the cost of materials for this job: $");
+        Jobcost = UserInfo.nextInt();
+        
+        //Get user job hours  
+        System.out.print("Please enter the number of hours this Job took: ");
+        Jobhours = UserInfo.nextDouble();
+        
+        //Get user travel hours
+        System.out.print("Please enter the number of hours it took to travel "
+                + "to this job: ");
+        traveltime = UserInfo.nextDouble();
+        
+        
+        ///seperate lines
+        System.out.print("===========================================================================\n");
+ 
+        
+        ///call methods to calculate hours totaled, traveltime total and the overall total
+        //pass throught variables jobcost, jobhours, traveltime
+        GettotalH = calcTotalH( Jobcost,Jobhours,traveltime);
+        GettotalT = calcTotalT( Jobcost,Jobhours,traveltime);
+        Gettotal = calcTotal( Jobcost,Jobhours,traveltime);
+        
+        ///company recipt
+        System.out.print("                           APPLE Support INC.                                \n"
+                       + " ================================== Invoice ==============================="); 
+        System.out.print("\n  Name:"+Jobname+"                               ");
+        System.out.print("\n  Materials: $"+ Jobcost);
+        System.out.print("\n  Hours: " + Jobhours + "                      Total: $" + GettotalH);
+        System.out.print("\n  Travel time: " + traveltime + "                Total: $" + GettotalT);
+        System.out.print("\n                                                 TOTAL AMOUNT: $" + Gettotal);
+        System.out.print("\n===========================================================================");
+           
+           
+        
+    }
+            ///method created to pass aparameters through for total hours
+          public static double calcTotalH(double Jobcost, double Jobhours, double traveltime){
+    
+              //declare variable calculate total
+                double totalhours = Jobhours * 35;
+                //return total to main
+                return totalhours;
+               
+}                ///method created to pass aparameters through for total hours   
+                 public static double calcTotalT(double Jobcost, double Jobhours, double traveltime){
+                     //declare variables and calulate travel total
+                     double totaltravel = traveltime * 12;
+                        ///return travel total to main
+                        return totaltravel;      
+}
+
+                               ///method created to pass aparameters through for total hours
+                             public static double calcTotal(double Jobcost, double Jobhours, double traveltime){
+                                 
+                                 ///declare varibles and calculate totals
+                                double totalhours = Jobhours * 35;
+                                double totaltravel = traveltime * 12;
+        
+                                double  Total = Jobcost + totalhours + totaltravel;
+                
+                                //return total to main
+                                return Total;
+               
+        
+        
+}      
+}         
+        
