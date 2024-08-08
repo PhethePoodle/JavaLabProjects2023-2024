@@ -1,0 +1,126 @@
+/***************************************************************
+* Programmer: Pheobe Hill
+* BroncoNetID: Pzs0022
+* Lab 2: Invoice
+* CIS 2600: Business Application Programming Fall 2023
+*
+* Due date: 10/27/2023
+* Date completed: 10/17/2023
+****************************************************************
+The purpose of this program is to display the products of a company 
+ and allow an user to input user information like  invoice number, name,
+ and sales amount and also display an physical invoice for the 
+company. 
+* !!ONLY allow user access if invoice number is valid within 80000-1000 range.
+* **************************************************************
+1.Create class "Purchase" includes the main logic
+2.Create instance variables for methods
+3. Create instanceMethods like "getInvoice" to process user, invoice 
+ number, name,and sales amount.
+4. Create a display method to produce a realistic invoice.
+**********************************************************************/
+//import java scanner to use print
+import java.util.Scanner;
+
+//Purchase object class 
+public class CreatePurchase {
+    
+//Main logic 
+public static void main(String[] args)
+                  
+    {   
+        
+    //Scanner used to created object input
+    Scanner input = new Scanner (System.in);
+       
+    //  ask for invoice number 
+    System.out.print("\n Invoice Number>>>  #"); 
+    //set invoice to user input
+    int invoice = input.nextInt();
+    
+    //while invoice is in range continue otherwise error message!
+    while(invoice < 1000 || invoice > 8000)
+   {
+    //error message displays till a valid number is put in
+    // ask for invoice number 
+    System.out.print("Error! Please enter a valid invoice number>>>");
+    invoice = input.nextInt();
+    
+    }
+    
+    //let user continue....Ask for user sales amount 
+    System.out.print("Enter the total sales amount>>>  $");
+    //references variable amount with user input
+    double amount = input.nextDouble();
+   
+    //while the sales amount is greater than 0 (not negative)
+    while(amount <0)
+   {
+    //error message displays till a valid number is put in
+    // ask for sales amount 
+    System.out.print("Error! Please enter a vaild sales amount number (Posotive numbers only)>>>");
+    amount = input.nextInt();
+    
+    }
+        
+    //get user input on product choice
+    System.out.print("Enter a product name: ");      
+    //variable product is equal to user input
+    String product = input.toString();
+                     
+    //get user input on product choice
+    System.out.print("add another product? Yes (1) or N0(2) ");
+    int go = input.nextInt();
+    
+    if (go == 1){
+       
+        //let user continue....Ask for user sales amount 
+    System.out.print("Enter the total sales amount>>>  $");
+    //references variable amount with user input
+     double amount2 = input.nextDouble();
+     
+       //while the sales amount is greater than 0 (not negative)
+    while(amount2 <0)
+   {
+    //error message displays till a valid number is put in
+    // ask for sales amount 
+    System.out.print("Error! Please enter a vaild sales amount number (Posotive numbers only)>>>");
+    amount2 = input.nextInt();
+    
+    }//end of while loop
+     
+    //get user input on product choice
+    System.out.print("Enter a product name: ");     
+    //variable product is equal to user input
+    String product2 = input.toString();
+   
+    //s  created to set instance methods created in Purchase
+    Purchase S2 = new Purchase();
+    
+    S2.setItemName(product2);
+    S2.setInvoiceNum(invoice);
+    S2.setSalesAmount(amount2);
+    
+    //display invoice templete
+    S2.displayInvoice(); 
+        
+    }///end of if
+    else{
+    
+
+   //s  created to set instance methods created in Purchase
+    Purchase S = new Purchase();
+    
+    S.setItemName(product);
+    S.setInvoiceNum(invoice);
+    S.setSalesAmount(amount);
+    
+    //display invoice templete
+    S.displayInvoice(); 
+    }//end of else
+   }//end of main
+    
+    
+  }//end of public class
+    
+
