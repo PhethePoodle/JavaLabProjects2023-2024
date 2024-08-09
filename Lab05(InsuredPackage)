@@ -1,0 +1,54 @@
+
+import javax.swing.JOptionPane;
+
+
+public class InsuredPackage extends Package{
+    
+          //variables created to hold vaules for shipping cost
+    private double shippingbeforeI;///original shipping price
+    private double shippingcost;
+    private double insurancecost;///additional insurance cost
+    
+    
+    
+    ///method created to calculate insurance shipping cost
+    public void calculateIshipping()
+    {
+        ///calll method from package class
+        this.shippingbeforeI = super.calculatecost();
+      
+       // if else created to determine the correct insurance cost
+        if(shippingbeforeI <= 1.00)
+            
+            insurancecost = 2.45;
+        
+        else if(shippingbeforeI >= 1.01 && shippingbeforeI <= 3.00)
+            
+            insurancecost = 3.95;
+        
+        else if(shippingbeforeI >= 3.01)
+            
+            insurancecost = 5.55;
+        
+        ///calculations
+        shippingcost = shippingbeforeI + insurancecost;
+        
+        
+    }
+    
+    //display method
+    public void display()
+    {
+               String display =  ("Shipping details" + "\n Shipping Cost" + shippingbeforeI + "\nInsurance Cost" + insurancecost + "\nTotal" + shippingcost);
+        
+        JOptionPane.showMessageDialog(null, display);
+        
+        
+    }
+}
+
+
+public class Lab5PheobeHill {
+    
+    
+}
