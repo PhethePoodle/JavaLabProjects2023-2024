@@ -1,0 +1,84 @@
+
+public class UserAccount {
+    private String emfName; 
+    private String emlName;
+    private String emEmail;
+    private String password;
+    private String newpassword;
+      
+       //get set name
+       public String getemfName()
+       {
+           return this.emfName;
+       }
+        
+       public void setemfName(String fname)
+       {
+          this.emfName = fname;
+        
+       }
+       
+       //get set name
+       public String getemlName()
+       {
+           return this.emlName;
+       }
+        
+       public void setemlName(String lname)
+       {
+          this.emlName = lname;
+        
+       }
+      
+       //get set email
+       public String getemEmail()
+       {
+           return this.emEmail;
+       }
+       public void setemEmail(String email)
+       {
+          this.emEmail = email;
+     
+       }
+       
+       
+       //get set password
+        public String setempassword()
+       {
+           return this.password;
+       }
+       public void getempassword(String password)
+       {
+          this.emEmail = password;
+  
+       }
+       
+       //get set password
+        public String setemnewpassword()
+       {
+           return this.newpassword;
+       }
+       public void getemnewpassword(String newpassword)
+       {
+          this.emEmail = newpassword;
+  
+       }
+       
+    private static final int MAX_SIZE = 10;  // Adjust the maximum size as needed
+    private String[] data = new String[MAX_SIZE];
+    private int size = 0;
+
+    // Method to add data to the database
+    public void addData(String item) {
+        if (size < MAX_SIZE) {
+            //data[size] = item;
+            size++;
+           // System.out.println("Data added: " + item);
+        } else {
+            System.err.println("Error: Database is full.");
+        }
+    }
+
+       
+       
+}
