@@ -1,0 +1,198 @@
+import java.util.Scanner;
+public class CreateUserAccount {
+
+  
+    public static void main(String[] args) {
+        
+        
+        UserAccount[] accounts = new UserAccount[20];
+        int counter = 0;
+        final int MAX = 20;
+        
+        Scanner input = new Scanner(System.in);
+        
+        showOptions();
+        
+        String option = input.nextLine();
+            
+        while (!option.equalsIgnoreCase("Q"))
+        {
+            switch(option)
+            {
+                case "A", "a" -> 
+                {
+                    addRecords(accounts, counter);
+                    counter++;
+					showDatabase(accounts);
+                }
+                case "C", "c" ->
+                {
+                    changeRecords(accounts, counter);
+					showDatabase(accounts);
+                }
+                case "D", "d" ->
+                {
+                    showDatabase(accounts);
+                }
+            }
+             
+        showOptions(); 
+        option = input.nextLine();
+                    
+         // Terminate the program with status code 0 (success)
+        System.exit(0);
+        //display closing message
+        System.out.println("""
+                                       ===================================================
+                                       Quitting!.....System Shutting down!...Good Day!...
+                                       ===================================================""");
+        }
+    }
+    
+    public static void addRecords(UserAccount[] accounts, int count)
+    {
+        
+    for (UserAccount account : accounts) {
+        
+        System.out.println("""
+                           ======================================================
+                                     Employee Database: (A)dd Records
+                           ====================================================== """);
+        
+    Scanner input = new Scanner(System.in);
+    String lname;
+    String fname;
+    String email;
+    String password;
+    
+     System.out.println("Enter your First Name:");
+     fname = input.nextLine();
+     account.setemfName(fname);
+   
+      
+     System.out.println("Enter your Last Name:");
+     lname = input.nextLine();
+     account.setemlName(lname);
+     
+     System.out.println("Enter your email:");
+     email = input.nextLine();
+     account.setemEmail(email);
+     
+     System.out.println("Enter your Password:");
+     password = input.nextLine();
+     account.setempassword();
+     
+    
+     
+    }     
+        
+    }
+    
+    public static UserAccount searchDatabase(UserAccount[] accounts, String keyword, int count)
+    {
+         // Get user input for the username to search
+        Scanner scanner = new Scanner(System.in);
+        
+        
+        System.out.print("Enter your email to search: ");
+        String search = scanner.nextLine();
+
+        
+        for (UserAccount account : accounts) {
+          
+            if (account != null && account.getemEmail().equals(search)) {
+                
+                
+            System.out.println("\nUserAccount found:");
+            System.out.println("First Name: " + account.getemfName());
+            System.out.println("Last Name: " + account.getemlName());
+            System.out.println("Email: " + account.getemEmail());
+                return account; 
+            } 
+            
+            else {
+            System.out.println("\nUserAccount not found with email " + search);
+             }
+            
+        }
+        return null; // Return null if
+       
+
+       
+           
+       
+         
+        
+    }
+ 
+    public static void changeRecords(UserAccount[] accounts, int count)
+    {
+        // Get user input for the username to modify
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter your password: ");
+        String password = scanner.nextLine();
+        
+        
+      for (UserAccount account : accounts) {
+          if (account != null && account.getempassword(password).equals(password)) {
+                
+                
+            System.out.println("\nUserAccount found:");
+            System.out.println("Enter a new password: " + account.getemEmail());
+                return account; 
+            } 
+            
+            else {
+            System.out.println("\nUserAccount not found! ");
+             }
+          
+      
+      }
+      
+        
+    }
+                
+        
+    
+    
+    public static void showDatabase(UserAccount[] accounts)
+    {
+       
+        for (UserAccount account : accounts) {
+            
+             System.out.println("""
+                           ======================================================
+                                     Employee Database Record Display
+                           ====================================================== """);
+             
+            // Assuming UserAccount has a method like getBalance() to retrieve balance
+            System.out.println("User " + account.getemfName() );
+            System.out.println("User " + account.getemlName() );
+            System.out.println("User " + account.getemEmail() );
+        }
+        System.out.println();
+    }
+    
+    
+    //menu
+    public static void showOptions()
+    {
+        
+        //display options
+        System.out.println("""
+                           ======================================================
+                                     Employee Database   
+                           ====================================================== """);
+        System.out.println("Please select an option.....");
+        System.out.println("(A)dd new Employee");
+        System.out.println("(C)hange Employee account records");
+        System.out.println("(D)isplay Employee account records");
+        System.out.println("(Q)uit");
+       
+    
+   
+    }
+     
+    }
+
+
