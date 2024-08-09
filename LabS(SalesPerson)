@@ -1,0 +1,69 @@
+/***************************************************************
+* Programmer: Pheobe Hill
+* BroncoNetID: Pzs0022
+* CIS 2600: lab 3 Salesperson Database
+*
+* Due date: 03/24/2023
+* Date completed: 03/24/2023*
+* Salesperson class created to get and store sales person information using instance
+*methods to pass parameters through.**************************** */
+
+
+//class created named SalesPerson
+public class Salesperson 
+{   
+    /// declare instance varibales. //"S" Salesperson 
+    private String Sname = "";
+    private String SId = "";
+    private String SSales;
+    
+   //// constructor created to initilize fields.
+    public Salesperson(String Sname, String SId, String SSales){
+        
+        this.Sname = Sname;
+        this.SId = SId;
+        this.SSales = SSales;
+    }
+    
+    ////Name getter and setter
+     public void setName(String name)
+    {
+        
+        this.Sname = name;
+    }
+    public String getName()
+    {
+        return this.Sname;
+    }
+   
+    
+    
+    ///ID getters and setters 
+     public void setId(String Id)
+    {
+        this.SId = Id;
+ 
+    }
+     
+    public String getId()
+    { 
+        return this.SId;
+        
+    }
+    
+    ////sales amt getters and setters 
+     public void setSales(String Sales){
+        this.SSales = Sales;
+    }
+
+    public String getSales()
+    {
+        return this.SSales;
+    }
+    
+   
+@Override public String toString(){
+    return "ID #" + SId+ "\t"+ Sname+ "\t$"+String.format("$0.00", SSales);
+}
+
+}
