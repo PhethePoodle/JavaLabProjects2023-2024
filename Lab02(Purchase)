@@ -1,0 +1,111 @@
+/***************************************************************
+* Programmer: Pheobe Hill
+* BroncoNetID: Pzs0022
+* Lab 2: Invoice
+* CIS 2600: Business Application Programming Fall 2023
+*
+* Due date: 10/27/2023
+* Date completed: 10/17/2023
+****************************************************************
+The purpose of this program is to store user invoice number, name,
+ and sales amount and also display an physical invoice for the 
+company.
+* **************************************************************
+1.Create class "Purchase" (object) 
+2.Create instance variables for methods
+3. Create instanceMethods like "getInvoice" to process user, invoice 
+ number, name,and calculate sales amount.
+4. Create a display method to produce a realistic invoice.
+**********************************************************************/
+
+//
+public class Purchase {
+   
+            
+    //Instance variables crated with specified data variables 
+    
+       private String itemName; 
+       private int invoiceNum;
+       private double salesAmt;
+       private double salesTax;
+       private double total;
+       
+      
+       ///GET instance method
+       public int getInvoiceNum()
+       {
+           
+           return invoiceNum;
+       }
+       
+       //SETT instance method
+       //invoiceNum  is the object
+       public void setInvoiceNum(int invoice)
+       {
+          
+           this.invoiceNum = invoice;
+       }
+       
+       //GETT instance method
+       public String getitemName()
+       {
+           return this.itemName;
+       }
+        
+       //SETT instance method 
+       //name is the object
+       public void setItemName(String name)
+       {
+          this.itemName = name;
+       }
+       
+       //GET Sales amount
+       public double getSalesAmount(){
+           return this.salesAmt;
+       }
+       ///SETTT instance method
+       //amount is the object
+       public void setSalesAmount(double amount)
+       {
+           
+           this.salesAmt = amount;
+           
+           //calculate sales tax
+           salesTax = amount * 0.6;
+           //calculate total
+           total = salesTax + salesAmt;
+           
+       }
+       
+       //display invoice method
+        public void displayInvoice()
+        {
+            //string printing is better forformatting lines
+            //store info in string "result"
+            String result = "==============================================\n"
+                          + "-----------------I-N-V-O-I-C-E----------------\n"
+                          + "==============================================\n"
+                          + "\n"
+                          + "              APPLE INC. Store            \n"
+                          + "\n"
+                          + "1234 hershey lane        \n"
+                          + "California, LA 31700\n"
+                          + "(333)-111-4444\n"
+                          + "\n"
+                          + "=============================================\n"
+                          + "Item Name: "+ itemName
+                          + "\nInvoice # "+ invoiceNum
+                          + "\nSales:        $ " + salesAmt
+                          + "\nSales Tax:    $ " + salesTax 
+                          + "\n -------------------------------------------\n"
+                          + "     Total:     $"    + total
+                          + "\n============================================";
+            
+                    
+                  
+            //print info in sting "result"
+            System.out.print(result);
+        }
+     
+              
+             }
