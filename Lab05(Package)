@@ -1,0 +1,98 @@
+
+import javax.swing.JOptionPane;
+
+
+public class Package {
+    //data fields for weight in ounces, shipping method, and shipping cost.
+    private double weight; //weight in ounces
+   private char shippingmethod; // A for air, T for truck, or M for mail.
+    private double shippingcost; //total shipping cost
+    private String name;
+    
+   
+    //method created to pass parameters weight and shippingmethod through
+    public Package(double weight, char shippingmethod, String name)
+    {
+         this.name = name;
+        this.weight = weight;
+        this.shippingmethod = shippingmethod;
+    
+    }
+   //get method for weight
+    public double getweight()
+    {
+        return weight;
+    }
+    
+   ///get method for shipping
+    public char getshippingmethod()
+    {
+        return shippingmethod;
+        
+    }
+    
+    //CALCULATE method
+    public double calculatecost()
+    {
+ 
+        switch (shippingmethod)
+        {
+            case 'A': 
+                if(weight <= 8)
+                    shippingcost = 2.00;
+                
+                else if(weight >= 9 && weight <= 16)
+                   shippingcost = 3.00;
+                
+                else if(getweight() >= 17)
+                    shippingcost = 4.00;
+                break;
+                
+            case 'T':
+                if(weight <= 8)
+                         shippingcost = 1.50;
+                
+                else if(weight >= 9 && weight <= 16)
+                    shippingcost = 2.35;
+                
+                else if(weight >= 17)
+                    shippingcost = 3.25;
+                break;
+                
+            case 'M':
+                if(weight <= 8)
+                         shippingcost = 0.50;
+                
+                else if(weight >= 9 && weight <= 16)
+                    shippingcost = 1.50;
+                
+                else if(weight >= 17)
+                    shippingcost = 2.15;
+                break;
+                
+        }
+       
+        //JOptionPane.showInternalMessageDialog(null, "Shipping Cost Total" + shippingcost);
+        return this.shippingcost;
+        
+        
+    }
+    
+    //GET
+   public double getshippingcost()
+   {
+       return shippingcost;
+   }
+    
+    //DISPLAY
+    public void display()
+    {
+        
+        
+        String display =  ("Shipping details" + "\n Pkg Weight lbs" + weight + "\nShipping Method" + shippingmethod + "\nShipping Cost" +shippingcost);
+        
+        JOptionPane.showMessageDialog(null, display);
+        
+    }
+
+}
