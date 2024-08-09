@@ -1,0 +1,43 @@
+
+import javax.swing.JOptionPane;
+
+
+public class UsePackage {
+
+ 
+    public static void main(String[] args) {
+     String name;
+       double weight;
+       String shippingmethod;
+       String insurance;
+       String insurancetotal;
+      String inputString;
+      
+     
+      
+       JOptionPane.showMessageDialog (null, """
+                                            Welcome!
+                                
+                               Please enter your package details! """);
+      
+      inputString = JOptionPane.showInputDialog (null,"What is your name?");
+      name = String.format(inputString);
+         
+        
+      inputString = JOptionPane.showInputDialog(null,"Enter the package weight"); 
+      weight = Integer.parseInt(inputString);
+      
+      inputString = JOptionPane.showInputDialog(null,"""
+                                                     Pick a shipping method
+                                                     (A)ir
+                                                     (T)ruck
+                                                     (M)ail"""); 
+   
+ 
+      
+      inputString = JOptionPane.showInputDialog(null,"Would you like to add insurence (y) or (n) "); 
+      insurance = String.format(inputString);
+      
+    }
+    
+}
