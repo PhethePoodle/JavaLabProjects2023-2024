@@ -1,0 +1,267 @@
+/***************************************************************
+* Programmer: Pheobe Hill
+* BroncoNetID: Pzs0022
+* CIS 2600: lab 3 Salesperson Database
+*
+* Due date: 03/24/2023
+* Date completed: 03/24/2023
+****************************************************************
+CreateSalesperson program created to display a menu of options and 
+allows user to add a new data, change data, and quit the program in all.
+**********************************************************************/
+//import java scanner
+import java.util.Scanner;
+import java.util.ArrayList;
+//import java.util.Collections;
+
+///class "createSalesperson" created to
+public class CreateSalesperson 
+{
+
+    
+    ///main class 
+    public static void main(String[] args) 
+  {
+      
+///"E" user Entry   VARIABLES 
+    String Umenu ;
+    String Ulist ;
+    
+    ///ADD VARIABLES
+    String AID ;
+    String Aname ;
+    String ASales ;
+    
+    
+    
+    ///make only 20 Salespersons accounts Arrapcap at 20
+    final int ARRAYCAP = 20;
+    
+    //TO CHANGE VARIABLES
+    int Change ;
+    String CID ;
+    String Cname;
+    String CSales;
+    
+    //boolean "reloop" created to keep program going as long as true.
+    boolean reloop = true;
+    
+    //scanner object created to obtain user input
+    Scanner inputDevice = new Scanner(System.in);
+    
+    //Array created to store user input 
+    ArrayList<Salesperson> Salespersons = new ArrayList<>(ARRAYCAP);
+    
+    //loop for entire system (quit funtion) 
+    while (reloop = true)
+    {
+        
+//menu display
+        System.out.println("""
+                           ======================================================
+                                     Salespersons Database 
+                           ====================================================== """);
+        
+        System.out.println("(A)dd new Account");
+        System.out.println("(C)hange account records");
+        System.out.println("(Q)uit");
+        System.out.println("Please select an option.....");
+    
+        //toUppercase so lowercase entry still works
+        Umenu = inputDevice.nextLine().toUpperCase();
+        
+        //while loop created so if any entry not vaild will display same message
+        while (!(Umenu.equalsIgnoreCase("A")
+                || Umenu.equalsIgnoreCase("C")
+                || Umenu.equalsIgnoreCase("Q")))
+            
+            
+        {
+            
+            System.out.println("""
+                               
+                               Error!! Please enter a vaild entry code!
+                                            example: A,C,Q
+                               """);
+        }
+            ///switch created to select options 
+            switch(Umenu)
+            {
+                
+//ADD SELECION
+                case"A":
+                    
+                    //if used to keep the Array limit of 20 Salespersons
+                     if(Salespersons.size() < ARRAYCAP)
+                     {
+                            
+                        ///ask for id number 
+                         System.out.println("Please enter your Salesperson ID#:");
+                         AID = inputDevice.nextLine();
+                            
+                                //While length loop created to stay within the 8 charater limit.
+                                while ((AID.length() != 8))
+                                {
+                                System.out.print("""
+                                             create a 8 digit Salesperson ID#:""");
+                            
+                                AID = inputDevice.nextLine();
+                           
+                                    ///check for duplicate ID number
+                                    for(Salesperson sp : Salespersons)
+                                    {
+                               
+                                        //Call method getid 
+                                        while (sp.getId().equals(AID))
+                                       {
+                                   
+                                         System.out.println("Error! Salesperson ID # already exist!");
+                                         System.out.println("Please enter your Salesperson ID#:");
+                                         AID = inputDevice.nextLine();
+                                        } //end of getid method
+                               
+                                    } //end of duplicate id # check 
+                                    
+                                }//end of character limit within 8
+                                
+                           ///check for duplicate ID number
+                           for(Salesperson sp : Salespersons)
+                           {
+                               
+                               //Call method getid 
+                               while (sp.getId().equals(AID))
+                               {
+                                   
+                                  System.out.println("Error! Salesperson ID # already exist!");
+                                   System.out.println("Please enter your Salesperson ID#:");
+                                   AID = inputDevice.nextLine();  
+                               }//end of call method getid
+                               
+                                        //While length loop created to stay within the 8 charater limit.
+                                        while ((AID.length() != 8))
+                                        {
+                                            System.out.print("""
+                                             create a 8 digit Salesperson ID#:""");
+                            
+                                            AID = inputDevice.nextLine();
+                                        }//end of 8 character limit
+                                        
+                            }//end of duplicate id number check
+                           
+                           //get salesperson name 
+                            System.out.println("Please enter your Salesperson name:");
+                            Aname = inputDevice.nextLine();
+                            //get salesperson sales amount
+                            System.out.println("Please enter your total sales amount: $");
+                            ASales = inputDevice.nextLine();
+                            
+                            
+                            //new objects created from salesperson class using user input
+                            Salesperson adds = new Salesperson(AID,Aname,ASales);
+                            
+                            adds.setId(AID);
+                            adds.setName(Aname);
+                            adds.setSales(ASales);
+                            
+                            //add to the next in array
+                            Salespersons.add(adds);
+                            
+                      }///end of array cap at 20 
+    
+                     else{
+                         System.out.println("""
+                                            ===============================================================
+                                            Salesperson's Database has reached full capacity of 20!
+                                            Please reach out to department manager for further assiatnce!
+                                            ================================================================""");
+                         }//end of else for case "A" (ADD)
+                         break;
+                         
+//CHANGE SELECTION
+                case "C":
+                    
+                    //user inout of elements
+                    System.out.print("How many elements would you like to change?");
+                    
+                    Change = inputDevice.nextInt();
+                    
+                    //calls array to input users changes
+                    Salesperson Changes = Salespersons.get(Change - 1);
+                    
+                    ///change Salesperson account
+                    System.out.println("Old account information:" + 
+                            Changes.getId() + " " + 
+                            Changes.getName() + " " + 
+                            Changes.getSales());
+                    
+                    ///new sales is
+                      System.out.println("Please enter a new Salesperson ID#:");
+                      inputDevice.nextLine();
+                      CID = inputDevice.nextLine();
+                    
+                      //new sales name
+                      System.out.println("Please enter a new Salesperson name:");
+                      Cname = inputDevice.nextLine();
+                      
+                      //new sales amount
+                      System.out.println("Please enter a new Salesperson sales amount:");
+                      CSales = inputDevice.nextLine();
+                      
+                      //set valuse to user input
+                      Salespersons.get(Change-1).setId(CID);
+                      Salespersons.get(Change-1).setName(Cname);
+                      Salespersons.get(Change-1).setSales(CSales);
+                      
+                      ///end of "c" change selection
+                      break;
+                    
+//Quit SELECTION
+                case "Q":
+                    
+                    //display closing message
+                    System.out.println("""
+                                       ===================================================
+                                       Quitting!.....System Shutting down!...Good Day!...
+                                       ===================================================""");
+                    
+                    //system exit 
+                    System.exit(0);
+                    //quit
+                default:
+                    
+                 }///end of switch menu
+//Display
+    System.out.println("""
+                       ==============================================
+                         Display Salespersons Accounts list ?  (y/n)           
+                       ==============================================""");
+    //set user input as the user list
+    Ulist = inputDevice.nextLine().toUpperCase();
+    
+    ///if "y" display list otherwise retun to main menu
+    if(Ulist.equals("Y"))
+    {
+        
+        Salesperson person;
+        
+        
+        System.out.println("ID#: "+ " Name "+" Sales Amount: ");
+        for(int count = 0; count < Salespersons.size(); count++)
+        {
+            person = Salespersons.get(count);
+            System.out.println(person.getId()+ " " + person.getName()+ " " +
+                    person.getSales());
+        }
+         
+    }//end of if statement to return to main menu
+    
+            else
+            System.out.println(" Press enter to return to main menu....");
+        inputDevice.nextLine();
+     
+        
+    } // end of while reloop = true
+    
+  }//end of main
+    
+}//end of create salesperson
